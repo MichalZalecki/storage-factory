@@ -1,9 +1,11 @@
 {
   "name": "storage-factory",
   "version": "0.0.1",
-  "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "@types/jest": "^23.3.2",
     "jest": "^23.6.0",
@@ -27,5 +29,18 @@
   },
   "keywords": [],
   "author": "Michal Zalecki <michal@michalzalecki.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichalZalecki/storage-factory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MichalZalecki/storage-factory/issues"
+  },
+  "homepage": "https://github.com/MichalZalecki/storage-factory#readme",
+  "description": "Becasue using localStorage directly is a bad idea"
 }

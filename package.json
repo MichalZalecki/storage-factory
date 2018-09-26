@@ -5,11 +5,25 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "devDependencies": {
+    "@types/jest": "^23.3.2",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.2",
     "typescript": "^3.0.3"
   },
   "scripts": {
     "prepare": "npm run build",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testRegex": "^.+\\.spec\\.ts$"
   },
   "keywords": [],
   "author": "Michal Zalecki <michal@michalzalecki.com>",

@@ -1,0 +1,17 @@
+{
+  "name": "storage-factory",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "devDependencies": {
+    "typescript": "^3.0.3"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Michal Zalecki <michal@michalzalecki.com>",
+  "license": "ISC"
+}

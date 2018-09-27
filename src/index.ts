@@ -1,4 +1,4 @@
-export class factory {
+export class StoragePolyfill {
   constructor(private storage: Storage) {}
 
   private inMemoryStorage: { [key: string]: string } = {};
@@ -66,5 +66,5 @@ export class factory {
 }
 
 export function storageFactory(storage: Storage): Storage {
-  return new factory(storage);
+  return new StoragePolyfill(storage);
 }

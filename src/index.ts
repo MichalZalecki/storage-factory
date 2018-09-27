@@ -1,66 +1,70 @@
-export function storageFactory(storage: Storage): Storage {
-  let inMemoryStorage: { [key: string]: string } = {};
-  const length = 0;
+export class StoragePolyfill {
+  constructor(private storage: Storage) {}
 
-  function isSupported() {
+  private inMemoryStorage: { [key: string]: string } = {};
+
+  public get length() {
+    if (this.isSupported()) {
+      return this.storage.length;
+    } else {
+      return Object.keys(this.inMemoryStorage).length;
+    }
+  }
+
+  public clear(): void {
+    if (this.isSupported()) {
+      this.storage.clear();
+    } else {
+      this.inMemoryStorage = {};
+    }
+  }
+
+  public getItem(name: string): string | null {
+    if (this.isSupported()) {
+      return this.storage.getItem(name);
+    }
+    if (this.inMemoryStorage.hasOwnProperty(name)) {
+      return this.inMemoryStorage[name];
+    }
+    return null;
+  }
+
+  public key(index: number): string | null {
+    if (this.isSupported()) {
+      return this.storage.key(index);
+    } else {
+      return Object.keys(this.inMemoryStorage)[index] || null;
+    }
+  }
+
+  public removeItem(name: string): void {
+    if (this.isSupported()) {
+      this.storage.removeItem(name);
+    } else {
+      delete this.inMemoryStorage[name];
+    }
+  }
+
+  public setItem(name: string, value: string): void {
+    if (this.isSupported()) {
+      this.storage.setItem(name, value);
+    } else {
+      this.inMemoryStorage[name] = String(value); // not everyone uses TypeScript
+    }
+  }
+
+  private isSupported() {
     try {
       const testKey = "__some_random_key_you_are_not_going_to_use__";
-      storage.setItem(testKey, testKey);
-      storage.removeItem(testKey);
+      this.storage.setItem(testKey, testKey);
+      this.storage.removeItem(testKey);
       return true;
     } catch (e) {
       return false;
     }
   }
+}
 
-  function clear(): void {
-    if (isSupported()) {
-      storage.clear();
-    } else {
-      inMemoryStorage = {};
-    }
-  }
-
-  function getItem(name: string): string | null {
-    if (isSupported()) {
-      return storage.getItem(name);
-    }
-    if (inMemoryStorage.hasOwnProperty(name)) {
-      return inMemoryStorage[name];
-    }
-    return null;
-  }
-
-  function key(index: number): string | null {
-    if (isSupported()) {
-      return storage.key(index);
-    } else {
-       return Object.keys(inMemoryStorage)[index] || null;
-    }
-  }
-
-  function removeItem(name: string): void {
-    if (isSupported()) {
-      storage.removeItem(name);
-    } else {
-      delete inMemoryStorage[name];
-    }
-  }
-
-  function setItem(name: string, value: string): void {
-    if (isSupported()) {
-      storage.setItem(name, value);
-    } else {
-      inMemoryStorage[name] = String(value); // not everyone uses TypeScript
-    }
-  }
-
-  return {
-    getItem,
-    setItem,
-    removeItem,
-    clear,
-    key,
-    length,
-  };
+export function storageFactory(storage: Storage): Storage {
+  return new StoragePolyfill(storage);
 }

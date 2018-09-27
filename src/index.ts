@@ -1,13 +1,5 @@
 export function storageFactory(storage: Storage): Storage {
   let inMemoryStorage: { [key: string]: string } = {};
-  const def = {
-    getItem,
-    setItem,
-    removeItem,
-    clear,
-    key,
-    length: 0
-  }
 
   function isSupported() {
     try {
@@ -26,7 +18,6 @@ export function storageFactory(storage: Storage): Storage {
     } else {
       inMemoryStorage = {};
     }
-    updateLength();
   }
 
   function getItem(name: string): string | null {
@@ -43,7 +34,7 @@ export function storageFactory(storage: Storage): Storage {
     if (isSupported()) {
       return storage.key(index);
     } else {
-       return Object.keys(inMemoryStorage)[index] || null;
+      return Object.keys(inMemoryStorage)[index] || null;
     }
   }
 
@@ -53,7 +44,6 @@ export function storageFactory(storage: Storage): Storage {
     } else {
       delete inMemoryStorage[name];
     }
-    updateLength();
   }
 
   function setItem(name: string, value: string): void {
@@ -62,16 +52,24 @@ export function storageFactory(storage: Storage): Storage {
     } else {
       inMemoryStorage[name] = String(value); // not everyone uses TypeScript
     }
-    updateLength();
   }
 
-  function updateLength() {
+  function length(): number {
     if (isSupported()) {
-      def.length = storage.length;
+      return storage.length;
     } else {
-      def.length = Object.keys(inMemoryStorage).length;
+      return Object.keys(inMemoryStorage).length;
     }
   }
 
-  return def;
+  return {
+    getItem,
+    setItem,
+    removeItem,
+    clear,
+    key,
+    get length() {
+      return length();
+    },
+  };
 }

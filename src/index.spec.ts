@@ -31,14 +31,17 @@ describe("storageFactory", () => {
         expect(storage.getItem("undefined")).toEqual("undefined");
       });
     });
+
     describe("property: length", () => {
       it("is initialized at 0", () => {
         expect(storage.length).toEqual(0);
       });
+
       it("should increment with setItem", () => {
         storage.setItem("foo", "Foo");
         expect(storage.length).toEqual(1);
       });
+
       it("should reset to 0 when cleared", () => {
         storage.setItem("foo", "Foo");
         expect(storage.length).toEqual(1);

@@ -8,10 +8,10 @@ Somewhare in your project
 
 ```js
 // storage.js
-import { StorageFactory } from "storage-factory";
+import { storageFactory } from "storage-factory";
 
-export const local = new StorageFactory(localStorage);
-export const session = new StorageFactory(sessionStorage);
+export const local = storageFactory(localStorage);
+export const session = storageFactory(sessionStorage);
 ```
 
 When you need to use storage

@@ -1,4 +1,4 @@
-export class StorageFactory {
+export class factory {
   constructor(private storage: Storage) {}
 
   private inMemoryStorage: { [key: string]: string } = {};
@@ -63,4 +63,8 @@ export class StorageFactory {
       return false;
     }
   }
+}
+
+export function storageFactory(storage: Storage): Storage {
+  return new factory(storage);
 }

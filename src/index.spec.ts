@@ -1,10 +1,10 @@
-import { StorageFactory } from "./index";
+import { storageFactory } from "./index";
 
 describe("storageFactory", () => {
-  let storage = new StorageFactory({} as Storage);
+  let storage = storageFactory({} as Storage);
 
   beforeEach(() => {
-    storage = new StorageFactory({} as Storage);
+    storage = storageFactory({} as Storage);
   });
 
   describe("when storage is not supported", () => {

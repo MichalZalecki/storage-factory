@@ -6,7 +6,7 @@ This library is a tiny (1.1KB) wrapper for `localStorage` and `sessionStorage` b
 
 ## Usage
 
-Somewhare in your project
+Somewhere in your project
 
 ```js
 // storage.js

@@ -19,3 +19,7 @@ jobs:
       - run:
           name: Run tests
           command: npm run test -- --coverage
+
+      - run:
+          name: Report coverage
+          command: npx codecov

@@ -1,18 +1,18 @@
 {
   "name": "storage-factory",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "lib"
   ],
   "devDependencies": {
-    "@types/jest": "^23.3.9",
-    "codecov": "^3.1.0",
-    "jest": "^23.6.0",
-    "prettier": "1.14.3",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.1.6"
+    "@types/jest": "^24.0.15",
+    "codecov": "^3.5.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
   },
   "scripts": {
     "prepare": "npm run build",

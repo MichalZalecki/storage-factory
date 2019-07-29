@@ -4,7 +4,7 @@ describe("storageFactory", () => {
   let storage: Storage;
 
   beforeEach(() => {
-    storage = storageFactory({} as Storage);
+    storage = storageFactory(() => ({} as Storage));
   });
 
   describe("when storage is not supported", () => {

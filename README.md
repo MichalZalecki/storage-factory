@@ -12,8 +12,8 @@ Somewhere in your project
 // storage.js
 import { storageFactory } from "storage-factory";
 
-export const local = storageFactory(localStorage);
-export const session = storageFactory(sessionStorage);
+export const local = storageFactory(() => localStorage);
+export const session = storageFactory(() => sessionStorage);
 ```
 
 When you need to use storage
@@ -25,6 +25,14 @@ function login(token) {
   storage.local.setItem("token", token);
   // do your other login things
 }
+```
+
+## Example
+
+Run the example using [parcel](https://parceljs.org/)
+
+```bash
+npx parcel example/index.html
 ```
 
 ## Contribute

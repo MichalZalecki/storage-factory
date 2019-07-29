@@ -1,11 +1,11 @@
-export function storageFactory(storage: Storage): Storage {
+export function storageFactory(getStorage: () => Storage): Storage {
   let inMemoryStorage: { [key: string]: string } = {};
 
   function isSupported() {
     try {
       const testKey = "__some_random_key_you_are_not_going_to_use__";
-      storage.setItem(testKey, testKey);
-      storage.removeItem(testKey);
+      getStorage().setItem(testKey, testKey);
+      getStorage().removeItem(testKey);
       return true;
     } catch (e) {
       return false;
@@ -14,7 +14,7 @@ export function storageFactory(storage: Storage): Storage {
 
   function clear(): void {
     if (isSupported()) {
-      storage.clear();
+      getStorage().clear();
     } else {
       inMemoryStorage = {};
     }
@@ -22,7 +22,7 @@ export function storageFactory(storage: Storage): Storage {
 
   function getItem(name: string): string | null {
     if (isSupported()) {
-      return storage.getItem(name);
+      return getStorage().getItem(name);
     }
     if (inMemoryStorage.hasOwnProperty(name)) {
       return inMemoryStorage[name];
@@ -32,7 +32,7 @@ export function storageFactory(storage: Storage): Storage {
 
   function key(index: number): string | null {
     if (isSupported()) {
-      return storage.key(index);
+      return getStorage().key(index);
     } else {
       return Object.keys(inMemoryStorage)[index] || null;
     }
@@ -40,7 +40,7 @@ export function storageFactory(storage: Storage): Storage {
 
   function removeItem(name: string): void {
     if (isSupported()) {
-      storage.removeItem(name);
+      getStorage().removeItem(name);
     } else {
       delete inMemoryStorage[name];
     }
@@ -48,7 +48,7 @@ export function storageFactory(storage: Storage): Storage {
 
   function setItem(name: string, value: string): void {
     if (isSupported()) {
-      storage.setItem(name, value);
+      getStorage().setItem(name, value);
     } else {
       inMemoryStorage[name] = String(value); // not everyone uses TypeScript
     }
@@ -56,7 +56,7 @@ export function storageFactory(storage: Storage): Storage {
 
   function length(): number {
     if (isSupported()) {
-      return storage.length;
+      return getStorage().length;
     } else {
       return Object.keys(inMemoryStorage).length;
     }

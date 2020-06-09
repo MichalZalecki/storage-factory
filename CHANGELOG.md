@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+* Update development dependencies
+
 ## 0.1.0
 
 * `storageFactory` now accepts a function instead of `Storage`. Learn more: [#10](https://github.com/MichalZalecki/storage-factory/issues/10)

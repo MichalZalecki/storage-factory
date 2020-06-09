@@ -18,15 +18,13 @@ describe("storageFactory", () => {
       });
 
       it("converts values to strings", () => {
-        // @ts-ignore
+        // @ts-expect-error
         expect(storage.setItem("one", 1)).toBeUndefined();
         expect(storage.getItem("one")).toEqual("1");
 
-        // @ts-ignore
         expect(storage.setItem("null", null)).toBeUndefined();
         expect(storage.getItem("null")).toEqual("null");
 
-        // @ts-ignore
         expect(storage.setItem("undefined", undefined)).toBeUndefined();
         expect(storage.getItem("undefined")).toEqual("undefined");
       });

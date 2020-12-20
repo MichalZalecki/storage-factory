@@ -30,9 +30,6 @@
     ],
     "testRegex": "^.+\\.spec\\.ts$"
   },
-  "prettier": {
-    "trailingComma": "es5"
-  },
   "keywords": [],
   "author": "Michal Zalecki <michal@michalzalecki.com>",
   "license": "ISC",

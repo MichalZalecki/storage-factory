@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/MichalZalecki/storage-factory.svg?style=svg)](https://circleci.com/gh/MichalZalecki/storage-factory)
 
-This library is a tiny (1.1KB) wrapper for `localStorage` and `sessionStorage` because using storage directly is a bad idea. [That's why](https://michalzalecki.com/why-using-localStorage-directly-is-a-bad-idea/).
+This library is a [tiny](https://bundlephobia.com/result?p=storage-factory) (0.8KB) wrapper for `localStorage` and `sessionStorage` because using Storage directly is a bad idea. Here's the blogpost that explains [why is that](https://michalzalecki.com/why-using-localStorage-directly-is-a-bad-idea/).
 
 **Warning**: object access (e.g. `localStorage.foo`) is not yet implemented 💥
 

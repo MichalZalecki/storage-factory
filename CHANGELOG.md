@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+* Update development dependencies
+
 ## 0.2.0
 
 * **Breaking change**: Provide ESM wrapper

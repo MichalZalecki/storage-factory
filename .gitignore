@@ -4,3 +4,4 @@ lib/*
 coverage
 dist
 .cache
+.parcel-cache
